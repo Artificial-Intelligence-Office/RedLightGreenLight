@@ -39,5 +39,12 @@ function drawBoard() {
     line(BORDER, BORDER + START_GAP, WIDTH - BORDER, BORDER + START_GAP);
     line(BORDER, HEIGHT - BORDER - START_GAP, WIDTH - BORDER, HEIGHT - BORDER - START_GAP);
 
-
+    push();
+    textAlign(CENTER, CENTER);
+    textSize(46);
+    noStroke();
+    fill(0);
+    text("START", WIDTH / 2, HEIGHT - BORDER - (START_GAP / 2));
+    text("END", WIDTH / 2, BORDER + (START_GAP / 2));
+    pop();
 }
