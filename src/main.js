@@ -8,7 +8,8 @@ const BORDER = 10,
 
 //player settings
 const startY = HEIGHT - BORDER - (START_GAP / 2), //start the player at middle of start zone
-    playerRad = 30;
+    playerRad = 30,
+    playerSpeed = 10;
 
 let p;
 
@@ -22,6 +23,10 @@ function draw() {
     background(230);
     drawBoard();
     p.draw();
+
+    if (keyIsPressed) {
+        if (keyCode == UP_ARROW) { p.move(1) };
+    }
 }
 
 function drawBoard() {
