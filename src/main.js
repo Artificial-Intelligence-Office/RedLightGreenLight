@@ -4,15 +4,24 @@ const WIDTH = 800,
 
 // Board settings
 const BORDER = 10,
-    START_GAP = 50;
+    START_GAP = 100;
+
+//player settings
+const startY = HEIGHT - BORDER - (START_GAP / 2), //start the player at middle of start zone
+    playerRad = 30;
+
+let p;
+
 
 function setup() {
     createCanvas(WIDTH, HEIGHT);
+    p = new Player(50);
 }
 
 function draw() {
     background(230);
     drawBoard();
+    p.draw();
 }
 
 function drawBoard() {
@@ -23,6 +32,12 @@ function drawBoard() {
     line(WIDTH - BORDER, BORDER, WIDTH - BORDER, HEIGHT - BORDER);
     line(BORDER, HEIGHT - BORDER, WIDTH - BORDER, HEIGHT - BORDER);
 
+    fill(200);
+    rect(BORDER, BORDER, WIDTH - (2 * BORDER), START_GAP);
+    rect(BORDER, HEIGHT - BORDER - START_GAP, WIDTH - (2 * BORDER), START_GAP);
+
     line(BORDER, BORDER + START_GAP, WIDTH - BORDER, BORDER + START_GAP);
     line(BORDER, HEIGHT - BORDER - START_GAP, WIDTH - BORDER, HEIGHT - BORDER - START_GAP);
+
+
 }
