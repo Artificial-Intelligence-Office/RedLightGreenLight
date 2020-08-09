@@ -9,7 +9,7 @@ const BORDER = 10,
 //player settings
 const startY = HEIGHT - BORDER - (START_GAP / 2), //start the player at middle of start zone
     playerRad = 30,
-    playerSpeed = 10;
+    playerSpeed = 5;
 
 let p;
 
