@@ -1,24 +1,28 @@
+// Canvas settings
 const WIDTH = 800,
     HEIGHT = 800;
 
+// Board settings
+const BORDER = 10,
+    START_GAP = 50;
+
 function setup() {
     createCanvas(WIDTH, HEIGHT);
-    background(230);
-
-    stroke(0);
-    strokeWeight(2);
-    line(10, 10, 10, 790);
-    line(10, 10, 790, 10);
-    line(790, 10, 790, 790);
-    line(10, 790, 790, 790);
-
-    line(10, 50, 790, 50);
-    line(10, 740, 790, 740);
-
-
 }
 
 function draw() {
+    background(230);
+    drawBoard();
+}
 
+function drawBoard() {
+    stroke(0);
+    strokeWeight(2);
+    line(BORDER, BORDER, BORDER, HEIGHT - BORDER);
+    line(BORDER, BORDER, WIDTH - BORDER, BORDER);
+    line(WIDTH - BORDER, BORDER, WIDTH - BORDER, HEIGHT - BORDER);
+    line(BORDER, HEIGHT - BORDER, WIDTH - BORDER, HEIGHT - BORDER);
 
+    line(BORDER, BORDER + START_GAP, WIDTH - BORDER, BORDER + START_GAP);
+    line(BORDER, HEIGHT - BORDER - START_GAP, WIDTH - BORDER, HEIGHT - BORDER - START_GAP);
 }
