@@ -1,10 +1,12 @@
 class Player {
     constructor(genome, x) {
         this.brain = genome;
+        this.brain.score = 0;
         this.x = x;
         this.y = startY;
         this.speed = playerSpeed;
         this.alive = true;
+        this.done = false;
     }
 
 
@@ -19,10 +21,16 @@ class Player {
         pop();
     }
 
-    move(up) {
+    move() {
+        let input = [];
+        if (LIGHT == "Green") input.push(0);
+        else if (LIGHT == "Orange") input.push(0.5);
+        else if (LIGHT == "Red") input.push(1);
+
+        let output = this.brain.activate(input);
         if (this.alive) {
             if (this.y > (BORDER + START_GAP - playerRad)) {
-                if (up > 0.5) {
+                if (output[0] > 0.5) {
                     if (LIGHT == "Green" || LIGHT == "Orange") {
                         this.y -= this.speed;
                     } else {

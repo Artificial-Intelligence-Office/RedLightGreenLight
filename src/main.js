@@ -15,6 +15,8 @@ const OrangeTime = 30; //how many frames we stay on orange
 let OrangeCounter = 0;
 let ChangeProb = 0.01; //prob to change the colors every frame
 
+let frameCounter = 0;
+
 
 let gap = WIDTH - (4 * BORDER);
 let playerSpawnGap = gap / PLAYERS
@@ -28,23 +30,20 @@ const startY = HEIGHT - BORDER - (START_GAP / 1.25), //start the player at middl
 
 function setup() {
     createCanvas(WIDTH, HEIGHT);
-
-    for (let i = 0; i < PLAYERS; i++) {
-        p.push(new Player((2 * BORDER) + (playerSpawnGap / 2) + (i * playerSpawnGap)));
-    }
+    initNeat();
+    startEvaluation();
 }
 
 function draw() {
+    frameCounter++;
     background(230);
     changeLight();
     drawBoard();
     for (let i = 0; i < p.length; i++) {
         p[i].draw();
+        p[i].move();
     }
-
-    if (keyIsPressed) {
-        if (keyCode == UP_ARROW) { p[0].move(1) };
-    }
+    checkNeat();
 }
 
 //randomly change the light
@@ -62,6 +61,27 @@ function changeLight() {
     }
 }
 
+function checkNeat() {
+    allDead = true
+    allDone = true
+    for (let i = 0; i < p.length; i++) {
+        if (p[i].alive) allDead = false;
+        if (!p[i].done) allDone = false;
+    }
+    if (allDead || allDone) endEvaluation();
+
+    if (frameCounter > ITERATIONS) {
+        endEvaluation();
+    }
+
+    for (let i = 0; i < p.length; i++) {
+        if (p[i].y < (BORDER + START_GAP - playerRad) && p[i].done == false) {
+            p[i].brain.score = (ITERATIONS - frameCounter) ** 2;
+            p[i].done = true;
+            console.log("END REACHED");
+        }
+    }
+}
 
 function drawBoard() {
     stroke(0);

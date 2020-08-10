@@ -7,8 +7,7 @@ var Architect = neataptic.Architect;
 Config.warnings = false;
 
 /* genetic algorithm settings */
-var PLAYERS = 50; //How many players to test at a time
-var ITERATIONS = 1200; //how many frames per generation maximum
+var ITERATIONS = 500; //how many frames per generation maximum
 var MUTATION_RATE = 0.5;
 var ELITISM = Math.round(0.1 * PLAYERS);
 var START_HIDDEN_SIZE = 6;
@@ -52,11 +51,15 @@ function initNeat() {
 }
 
 function startEvaluation() {
-
+    p = [];
+    let i = 0
     for (var genome in neat.population) {
         genome = neat.population[genome];
+        p.push(new Player(genome, (2 * BORDER) + (playerSpawnGap / 2) + (i * playerSpawnGap)));
+        i++;
     }
     neat.mutate();
+    frameCounter = 0;
 }
 
 
