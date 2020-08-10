@@ -17,8 +17,10 @@ class Player {
     }
 
     move(up) {
-        if (up > 0.5) {
-            this.y -= this.speed;
+        if (this.y > (BORDER + START_GAP - playerRad)) {
+            if (up > 0.5) {
+                this.y -= this.speed;
+            }
         }
     }
 }
