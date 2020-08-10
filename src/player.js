@@ -1,5 +1,6 @@
 class Player {
-    constructor(x) {
+    constructor(genome, x) {
+        this.brain = genome;
         this.x = x;
         this.y = startY;
         this.speed = playerSpeed;
