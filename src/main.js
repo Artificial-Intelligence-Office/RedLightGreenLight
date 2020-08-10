@@ -78,7 +78,7 @@ function checkNeat() {
         if (p[i].y < (BORDER + START_GAP - playerRad) && p[i].done == false) {
             p[i].brain.score = (ITERATIONS - frameCounter) ** 2;
             p[i].done = true;
-            console.log("END REACHED");
+            //console.log("END REACHED");
         }
     }
 }
