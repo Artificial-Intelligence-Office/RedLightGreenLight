@@ -11,9 +11,9 @@ let p = [];
 
 let LIGHT = "Orange";
 let newLIGHT = "Green";
-let OrangeTime = 30; //how many frames we stay on orange
+const OrangeTime = 30; //how many frames we stay on orange
 let OrangeCounter = 0;
-let ChangeProb = 0.01;
+let ChangeProb = 0.01; //prob to change the colors every frame
 
 
 let gap = WIDTH - (2 * BORDER);
