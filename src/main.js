@@ -16,7 +16,7 @@ let OrangeCounter = 0;
 let ChangeProb = 0.01; //prob to change the colors every frame
 
 
-let gap = WIDTH - (2 * BORDER);
+let gap = WIDTH - (4 * BORDER);
 let playerSpawnGap = gap / PLAYERS
 
 //player settings
@@ -30,7 +30,7 @@ function setup() {
     createCanvas(WIDTH, HEIGHT);
 
     for (let i = 0; i < PLAYERS; i++) {
-        p.push(new Player(BORDER + (playerSpawnGap / 2) + (i * playerSpawnGap)));
+        p.push(new Player((2 * BORDER) + (playerSpawnGap / 2) + (i * playerSpawnGap)));
     }
 }
 
